@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+    <title>AwesomeWeather Welcome Page</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+
+<body>
+
+<div class="site-content">
+    <div class="site-header">
+        <div class="container">
+            <a href="index.html" class="branding">
+                <img src="images/logo@2x.png" alt="" class="logo">
+                <div class="logo-type">
+                    <h1 class="site-title">Awesome Weather</h1>
+                    <small class="site-description">The best weather forecast site on the globe</small>
+                </div>
+            </a>
+
+        </div>
+    </div> <!-- .site-header -->
+
+    <div class="hero" data-bg-image="/images/banner.png">
+        <div class="container">
+            <p id="message"></p>
+            <form action="#" class="find-location">
+                <input type="text" placeholder="Find your location...">
+                <input type="submit" value="Find">
+            </form>
+
+        </div>
+    </div>
+
+    <div class="forecast-table">
+        <div class="container">
+            <div class="forecast-container">
+                <div class="today forecast">
+                    <div class="forecast-header">
+                        <div id="day" class="day">NaN</div>
+                        <div id="date" class="date">NaN</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div id="city" class="location">City?</div>
+                        <div class="degree">
+                            <div id="temp" class="num">NaN</div>
+                            <div class="forecast-icon">
+                                <img id="wicon" src="" alt="" width=90>
+                            </div>
+                        </div>
+                        <span id="description"></span><br>
+                        <span id="humidity"><img src="images/icon-humidity.png" alt=""></span>
+                        <span id="wind-speed"><img src="images/icon-wind.png" alt=""></span>
+                        <span><img src="images/icon-compass.png" alt="">East</span>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div id="day1" class="day">Tuesday</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img id="day1icon" src="" alt="" width=48>
+                        </div>
+                        <div id="day1day" class="degree">23<sup>o</sup>C</div>
+                        <small id="day1night">18<sup>o</sup></small>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div id="day2" class="day">Wednesday</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img id="day2icon" src="" alt="" width=48>
+                        </div>
+                        <div id="day2day" class="degree">23<sup>o</sup>C</div>
+                        <small id="day2night" >18<sup>o</sup></small>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div id="day3" class="day">Thursday</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img id="day3icon" src="" alt="" width=48>
+                        </div>
+                        <div id="day3day" class="degree">23<sup>o</sup>C</div>
+                        <small id="day3night" >18<sup>o</sup></small>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div id="day4" class="day">Friday</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img id="day4icon" src="" alt="" width=48>
+                        </div>
+                        <div id="day4day" class="degree">23<sup>o</sup>C</div>
+                        <small id="day4night" >18<sup>o</sup></small>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div id="day5" class="day">Saturday</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img id="day5icon" src="" alt="" width=48>
+                        </div>
+                        <div id="day5day" class="degree">23<sup>o</sup>C</div>
+                        <small id="day5night" >18<sup>o</sup></small>
+                    </div>
+                </div>
+                <div class="forecast">
+                    <div class="forecast-header">
+                        <div id="day6" class="day">Sunday</div>
+                    </div> <!-- .forecast-header -->
+                    <div class="forecast-content">
+                        <div class="forecast-icon">
+                            <img id="day6icon" src="" alt="" width=48>
+                        </div>
+                        <div id="day6day" class="degree">23<sup>o</sup>C</div>
+                        <small id="day6night" >18<sup>o</sup></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <form action="#" class="subscribe-form">
+                        <input type="text" placeholder="Enter your email to subscribe...">
+                        <input type="submit" value="Subscribe">
+                    </form>
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="social-links">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <p class="colophon">Copyright 2020 Bálint Magyar. All rights reserved</p>
+        </div>
+        <!--p id="raw-data"></p-->
+    </footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/rest.js"></script>
+
+</body>
+
+</html>
