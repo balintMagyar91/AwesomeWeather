@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,12 @@
 
     <title>AwesomeWeather Welcome Page</title>
 
-    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css">
+    <!--link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script-->
 
 </head>
 
@@ -29,11 +34,11 @@
         </div>
     </div> <!-- .site-header -->
 
-    <div class="hero" data-bg-image="/images/banner.png">
+    <div class="hero" style="background-image: url('/images/banner.png');">
         <div class="container">
             <p id="message"></p>
-            <form action="#" class="find-location">
-                <input type="text" placeholder="Find your location...">
+            <form action="#" th:action="@{/location}" method="get" class="find-location">
+                <input type="text" name="cityName" placeholder="Find your location...">
                 <input type="submit" value="Find">
             </form>
 
@@ -45,93 +50,35 @@
             <div class="forecast-container">
                 <div class="today forecast">
                     <div class="forecast-header">
-                        <div id="day" class="day">NaN</div>
-                        <div id="date" class="date">NaN</div>
+                        <div id="day" class="day" th:text="${owm.current.dayOfWeek}">NaN</div>
+                        <div id="date" class="date" th:text="${owm.current.dayAndMonth}">NaN</div>
                     </div> <!-- .forecast-header -->
                     <div class="forecast-content">
-                        <div id="city" class="location">City?</div>
+                        <div id="city" class="location" th:text="${owm.locationName}">City?</div>
                         <div class="degree">
-                            <div id="temp" class="num">NaN</div>
+                            <div id="temp" class="num" th:text="${owm.current.temp} + '°C'">NaN</div>
                             <div class="forecast-icon">
-                                <img id="wicon" src="" alt="" width=90>
+                                <img id="wicon" th:src="${owm.current.weather[0].icon}" alt="" width=90>
                             </div>
                         </div>
-                        <span id="description"></span><br>
-                        <span id="humidity"><img src="images/icon-humidity.png" alt=""></span>
-                        <span id="wind-speed"><img src="images/icon-wind.png" alt=""></span>
+                        <span id="description" th:text="${owm.current.weather[0].description}"></span><br>
+                        <span id="humidity"><img src="images/icon-humidity.png" alt=""
+                                                 th:text="${owm.current.humidity}+'%'"></span>
+                        <span id="wind-speed"><img src="images/icon-wind.png" alt=""
+                                                   th:text="${owm.current.wind_speed}+'km/h'"></span>
                         <span><img src="images/icon-compass.png" alt="">East</span>
                     </div>
                 </div>
-                <div class="forecast">
+                <div class="forecast" th:each="daily:${owm.daily}">
                     <div class="forecast-header">
-                        <div id="day1" class="day">Tuesday</div>
-                    </div> <!-- .forecast-header -->
-                    <div class="forecast-content">
-                        <div class="forecast-icon">
-                            <img id="day1icon" src="" alt="" width=48>
-                        </div>
-                        <div id="day1day" class="degree">23<sup>o</sup>C</div>
-                        <small id="day1night">18<sup>o</sup></small>
+                        <div id="day1" class="day" th:text="${daily.dayOfWeek}">Tuesday</div>
                     </div>
-                </div>
-                <div class="forecast">
-                    <div class="forecast-header">
-                        <div id="day2" class="day">Wednesday</div>
-                    </div> <!-- .forecast-header -->
                     <div class="forecast-content">
                         <div class="forecast-icon">
-                            <img id="day2icon" src="" alt="" width=48>
+                            <img id="day1icon" th:src="${daily.weather[0].icon}" alt="" width=48>
                         </div>
-                        <div id="day2day" class="degree">23<sup>o</sup>C</div>
-                        <small id="day2night" >18<sup>o</sup></small>
-                    </div>
-                </div>
-                <div class="forecast">
-                    <div class="forecast-header">
-                        <div id="day3" class="day">Thursday</div>
-                    </div> <!-- .forecast-header -->
-                    <div class="forecast-content">
-                        <div class="forecast-icon">
-                            <img id="day3icon" src="" alt="" width=48>
-                        </div>
-                        <div id="day3day" class="degree">23<sup>o</sup>C</div>
-                        <small id="day3night" >18<sup>o</sup></small>
-                    </div>
-                </div>
-                <div class="forecast">
-                    <div class="forecast-header">
-                        <div id="day4" class="day">Friday</div>
-                    </div> <!-- .forecast-header -->
-                    <div class="forecast-content">
-                        <div class="forecast-icon">
-                            <img id="day4icon" src="" alt="" width=48>
-                        </div>
-                        <div id="day4day" class="degree">23<sup>o</sup>C</div>
-                        <small id="day4night" >18<sup>o</sup></small>
-                    </div>
-                </div>
-                <div class="forecast">
-                    <div class="forecast-header">
-                        <div id="day5" class="day">Saturday</div>
-                    </div> <!-- .forecast-header -->
-                    <div class="forecast-content">
-                        <div class="forecast-icon">
-                            <img id="day5icon" src="" alt="" width=48>
-                        </div>
-                        <div id="day5day" class="degree">23<sup>o</sup>C</div>
-                        <small id="day5night" >18<sup>o</sup></small>
-                    </div>
-                </div>
-                <div class="forecast">
-                    <div class="forecast-header">
-                        <div id="day6" class="day">Sunday</div>
-                    </div> <!-- .forecast-header -->
-                    <div class="forecast-content">
-                        <div class="forecast-icon">
-                            <img id="day6icon" src="" alt="" width=48>
-                        </div>
-                        <div id="day6day" class="degree">23<sup>o</sup>C</div>
-                        <small id="day6night" >18<sup>o</sup></small>
+                        <div id="day1day" class="degree" th:text="${daily.temp.max} + '°C'"></div>
+                        <small id="day1night" th:text="${daily.temp.min} + '°C'"></small>
                     </div>
                 </div>
             </div>
@@ -151,7 +98,7 @@
                     <div class="social-links">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
+                        <a href="#"><i class="fa fa-google"></i></a>
                         <a href="#"><i class="fa fa-pinterest"></i></a>
                     </div>
                 </div>
@@ -162,10 +109,6 @@
         <!--p id="raw-data"></p-->
     </footer>
 </div>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/rest.js"></script>
 
 </body>
 
