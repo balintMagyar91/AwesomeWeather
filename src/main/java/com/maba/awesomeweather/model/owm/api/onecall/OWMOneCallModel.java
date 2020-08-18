@@ -7,6 +7,7 @@ public class OWMOneCallModel {
     private String timezone_offset;
     private CurrentWeather current;
     private DailyWeather[] daily;
+    private String locationName;
 
     public OWMOneCallModel() {
     }
@@ -57,5 +58,13 @@ public class OWMOneCallModel {
 
     public void setDaily(DailyWeather[] daily) {
         this.daily = daily;
+    }
+
+    public String getLocationName() {
+        return locationName;
+    }
+
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 }

@@ -9,5 +9,9 @@ public interface WeatherService {
 
     OWMOneCallModel getCurrentWeatherByPosition(double lat, double lon);
 
-    GeoIP getLocation(String ipAddress);
+    GeoIP getLocationByIp(String ipAddress);
+
+    String getLocationByPosition(double lat, double lon);
+
+    OWMOneCallModel getCurrentWeatherByCityName(String cityName);
 }
