@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+
+    <title>AwesomeWeather Welcome Page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+
+<body class="bg-dark text-light">
+
+<div class="container">
+    <div class="jumbotron text-dark" style="background-image: url('images/banner.png');">
+        <div class="row">
+            <div class="col-sm">
+                <h1 class="display-4">Awesome Weather</h1>
+                <small class="">The best weather forecast site on the globe</small>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <p id="message"></p>
+        <form action="#" th:action="@{/location}" method="get" class="">
+            <div class="input-group mb-4">
+                <input type="text" class="form-control text-light bg-dark" name="cityName"
+                       placeholder="Find your location...">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Find</button>
+                </div>
+            </div>
+            <!--input type="submit" value="Find"-->
+        </form>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card bg-dark">
+                <div class="card-header text-dark bg-warning">
+                    <h5 id="day" th:text="${owm.current.dayOfWeek}">Monday</h5>
+                </div>
+                <div class="card-body">
+                    <h5 id="city" th:text="${owm.locationName}">Budapest</h5>
+                    <span id="date" th:text="${owm.current.dayAndMonth}">10. Sept</span>
+                    <h3 id="temp" th:text="${owm.current.temp} + '°C'">25°C</h3>
+                    <img id="wicon" th:src="${owm.current.weather[0].icon}" alt="°O°" width=90>
+                    <span id="description" th:text="${owm.current.weather[0].description}">Clear Sky</span><br>
+                    <span id="humidity"><img src="images/icon-humidity.png" alt="0%"
+                                             th:text="${owm.current.humidity}+'%'"></span>
+                    <span id="wind-speed"><img src="images/icon-wind.png" alt="0km/h"
+                                               th:text="${owm.current.wind_speed}+'km/h'"></span>
+                    <span><img src="images/icon-compass.png" alt="WIND">East</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <span th:each="daily:${owm.daily}">
+                <div class="card text-light bg-dark">
+                    <div class="card-header text-light bg-secondary">
+                        <h5 id="day1" th:text="${daily.dayOfWeek}">Tuesday</h5>
+                    </div>
+                    <div class="card-body">
+                        <img id="day1icon" th:src="${daily.weather[0].icon}" alt="ICON" width=48>
+                        <br>
+                        <div id="day1day" class="degree" th:text="${daily.temp.max} + '°C'">23°C</div>
+                        <small id="day1night" th:text="${daily.temp.min} + '°C'">13°C</small>
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8">
+                <form action="#" th:action="@{/subscribe}" method="get" class="">
+                    <div class="input-group mt-4 mb-4">
+                        <input type="text" class="form-control text-light bg-dark" name="email"
+                               placeholder="Enter your email to subscribe...">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <div class="container mt-4 mb-4">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-google"></i></a>
+                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="col-md-5 mb-4 text-light">Copyright 2020 Bálint Magyar. All rights reserved</div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
