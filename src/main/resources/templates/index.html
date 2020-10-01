@@ -9,11 +9,11 @@
     <title>AwesomeWeather Welcome Page</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!--script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -32,9 +32,9 @@
             </a>
 
         </div>
-    </div>
+    </div> <!-- .site-header -->
 
-    <div class="hero" style="background-image: url('images/banner.png');">
+    <div class="hero" style="background-image: url('/images/banner.png');">
         <div class="container">
             <p id="message"></p>
             <form action="#" th:action="@{/location}" method="get" class="find-location">
@@ -106,9 +106,11 @@
 
             <p class="colophon">Copyright 2020 Bálint Magyar. All rights reserved</p>
         </div>
+        <!--p id="raw-data"></p-->
     </footer>
 </div>
-
+<script src="js/plugins.js"></script>
+<script src="js/rest.js"></script>
 </body>
 
 </html>
